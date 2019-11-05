@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'djoser',
+    'product',
 	'rest_framework',
 	'rest_framework.authtoken',
 	'corsheaders',

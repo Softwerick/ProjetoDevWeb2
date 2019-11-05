@@ -7,8 +7,8 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">About</b-nav-item>
-        <b-nav-item href="#">Help</b-nav-item>
+        <b-nav-item href="#" active>About</b-nav-item>
+        <b-nav-item href="#" active>Help</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -43,7 +43,7 @@ export default {
             router.push('/products')
           }).catch(e => {
             alert(e)
-            router.push('/login/')
+            router.push('/')
           })
       }
     }
