@@ -1,9 +1,8 @@
 <template>
  <section>
      <Header />
-  <div> 
+   <b-container>
    <h1>Produtos</h1>
-  </div>
   <div v-for="product in products" v-bind:key="product.id">
    <p>{{product.name}}</p>
    <p>{{product.author}}</p>
@@ -14,6 +13,7 @@
    <hr>
   </div>
   <b-button @click="AddBook">Adicionar novo produto</b-button>
+  </b-container>
  </section>
 </template>
 <script>
