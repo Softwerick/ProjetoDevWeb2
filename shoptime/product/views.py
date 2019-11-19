@@ -19,3 +19,16 @@ class ProductCreate(generics.CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = ()
+
+class ProductUpdate(generics.UpdateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = (
+        permissions.IsAuthenticated,
+    )
+
+class ProductGet(generics.RetrieveAPIView):
+   queryset = Product.objects.all()
+   serializer_class = ProductSerializer
+   permission_classes = ()
+

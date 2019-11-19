@@ -4,7 +4,7 @@
    <b-container>
    <h1>Produtos</h1>
   <div v-for="product in products" v-bind:key="product.id">
-   <p>{{product.name}}</p>
+   <p @click="editProduct(product)">{{product.name}}</p>
    <p>{{product.author}}</p>
    <p>{{product.description}}</p>
    <b-btn class="red" @click="deleteProduct(product)">
@@ -12,7 +12,7 @@
    </b-btn>
    <hr>
   </div>
-  <b-button @click="AddBook">Adicionar novo produto</b-button>
+  <b-button @click="AddProduct">Adicionar novo produto</b-button>
   </b-container>
  </section>
 </template>
@@ -33,7 +33,7 @@ export default {
   this.all();
  },
  methods: {
-     AddBook(){
+     AddProduct(){
          router.push('/products/add')
      },
   all () {
@@ -60,6 +60,9 @@ export default {
     })
    }
   },
+  editProduct(product){
+    router.push(`/products/edit/${product.id}`)
+  }
  }
 }
 </script>
