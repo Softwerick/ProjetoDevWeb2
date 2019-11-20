@@ -45,6 +45,7 @@ export default {
      this.products = response.data
    });
   },
+  
   deleteProduct(product) {
    if (confirm('Excluir ' + product.name)) {
     axios.delete(

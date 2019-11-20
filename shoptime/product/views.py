@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, Provider
+from .serializers import ProductSerializer, ProviderSerializer
  
 class ProductList(generics.ListAPIView):
    queryset = Product.objects.all()
@@ -31,4 +31,10 @@ class ProductGet(generics.RetrieveAPIView):
    queryset = Product.objects.all()
    serializer_class = ProductSerializer
    permission_classes = ()
+
+
+class ProviderList(generics.ListAPIView):
+    queryset = Provider.objects.all()
+    serializer_class = ProviderSerializer
+    permission_classes = ()
 
