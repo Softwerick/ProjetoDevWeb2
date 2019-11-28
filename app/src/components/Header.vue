@@ -8,14 +8,13 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item v-if="checkLogin" active @click="productsPage">Produtos</b-nav-item>
-        <b-nav-item href="#" active>About</b-nav-item>
-        <b-nav-item href="#" active>Help</b-nav-item>
+        <b-nav-item @click="providerPage" active>Fornecedores</b-nav-item>
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
         <b-nav-item v-if="!checkLogin" v-b-modal.modal-1 right>Login</b-nav-item>
         <b-nav-item class="headerbuttons" v-else>
-          <b-dropdown id="dropdown-dropleft" dropleft class="headerbutton" :text="logged">
+          <b-dropdown id="dropdown-dropleft" dropleft class="headerbutton" :text="getUsername">
             <b-dropdown-item>Perfil</b-dropdown-item>
             <b-dropdown-item @click="logout">Logout</b-dropdown-item>
           </b-dropdown>
@@ -46,6 +45,9 @@ export default {
     computed:{
       checkLogin: function(){
         return this.$session.get('token')
+      },
+      getUsername: function(){
+        return this.$session.get('username')
       }
     },
     methods: {
@@ -53,6 +55,7 @@ export default {
           axios.post('http://localhost:8000/auth/token/login', this.credentials).then(res => {
             this.$session.start();
             this.$session.set('token', res.data.auth_token);
+            this.$session.set('username', this.credentials.username)
             router.push('/products')
           }).catch(e => {
             alert("Usuário ou senha incorretos")
@@ -69,6 +72,9 @@ export default {
       },
       productsPage(){
         router.push('/products')
+      },
+      providerPage(){
+        router.push('/providers')
       }
     }
 }

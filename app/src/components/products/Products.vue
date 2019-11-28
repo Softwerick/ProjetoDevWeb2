@@ -3,15 +3,24 @@
      <Header />
    <b-container>
    <h1>Produtos</h1>
-  <div v-for="product in products" v-bind:key="product.id">
-   <p @click="editProduct(product)">{{product.name}}</p>
-   <p>{{product.author}}</p>
-   <p>{{product.description}}</p>
-   <b-btn class="red" @click="deleteProduct(product)">
-    Apagar
-   </b-btn>
-   <hr>
-  </div>
+   <table style="width:100%">
+     <tr>
+       <th>Nome</th>
+       <th>Peso</th>
+       <th>Preço</th>
+       <th>Quantidade em estoque</th>
+       <th>Editar</th>
+       <th>Excluir</th>
+     </tr>
+     <tr v-for="product in products" v-bind:key="product.id">
+       <td>{{product.name}}</td>
+       <td>{{product.weight}}</td>
+       <td>{{product.price}}</td>
+       <td>{{product.stock}}</td>
+       <td @click="editProduct(product)"><i class="fas fa-pen icone"></i></td>
+       <td @click="deleteProduct(product)"><i class="fas fa-times icone"></i></td>
+     </tr>
+   </table>
   <b-button @click="AddProduct">Adicionar novo produto</b-button>
   </b-container>
  </section>
@@ -67,3 +76,18 @@ export default {
  }
 }
 </script>
+
+<style>
+table{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: center;
+	border: 2px solid black;
+}
+table *{
+	border: 2px solid black;
+}
+.icone{
+  border: none;
+}
+</style>
