@@ -38,3 +38,8 @@ class ProviderList(generics.ListAPIView):
     serializer_class = ProviderSerializer
     permission_classes = ()
 
+class ProviderCreate(generics.CreateAPIView):
+    queryset = Provider.objects.all()
+    serializer_class = ProviderSerializer
+    permission_classes = ()
+
